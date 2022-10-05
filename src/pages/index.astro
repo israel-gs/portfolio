@@ -1,7 +1,10 @@
 ---
 import Button from "../components/Button";
 import Layout from "../layouts/Layout.astro";
+import ContactMeButton from "../components/ContactMeButton.jsx";
 import ProfilePicture from "../assets/images/profile.jpg";
+import ContactInfo from "../components/ContactInfo.astro";
+import Footer from "../components/Footer.astro";
 ---
 
 <Layout title="Welcome to israelgs.com">
@@ -19,36 +22,23 @@ import ProfilePicture from "../assets/images/profile.jpg";
     >
       <div class="flex flex-col gap-4 justify-center items-start">
         <h1 class="text-white text-3xl md:text-6xl font-bold">
-          Hi, <br /> I'm Israel Gutierrez <br /> a Frontend Developer
+          Hola, <br />yo soy Israel <br />Frontend Developer
         </h1>
-        <Button onClick={}>Contact me</Button>
+        <ContactMeButton client:load />
       </div>
       <div>
         <img class="rounded-full w-[250px]" src={ProfilePicture} alt="" />
       </div>
     </div>
   </main>
+  <ContactInfo />
+  <Footer />
 </Layout>
 
 <style>
   .main {
     overflow: hidden;
   }
-
-  /* .main::before {
-    content: "";
-    font-size: 10rem;
-    background: url("../assets/images/noice-background.png") no-repeat center;
-    background-size: cover;
-    width: 100%;
-    height: 100%;
-    opacity: 0.2;
-    background-blend-mode: overlay, normal;
-    backdrop-filter: blur(40px);
-    position: absolute;
-    top: 0;
-    left: 0;
-  } */
 
   .circle-1 {
     position: absolute;

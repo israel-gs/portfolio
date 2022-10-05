@@ -1,5 +1,7 @@
 import { useEffect } from "react";
-import LogoImage from "../assets/images/logo.png";
+import LogoImage from "../assets/images/logo.svg";
+import MenuIcon from "../assets/images/bars-solid.svg";
+import { scrollToElement } from "../helpers/scrollToElement";
 
 export default function Header() {
   useEffect(() => {
@@ -8,7 +10,7 @@ export default function Header() {
 
   const changeAppbarBackgroundOnScroll = () => {
     const appbar = document.querySelector(".appbar");
-    const classesToAdd = ["bg-dark-900/20", "backdrop-blur-sm"];
+    const classesToAdd = ["bg-dark-900/30", "backdrop-blur-lg"];
     const height = appbar.offsetHeight;
     document.addEventListener("scroll", (e) => {
       if (window.scrollY > height) {
@@ -19,23 +21,35 @@ export default function Header() {
     });
   };
 
+  const handleContactMeClick = () => {
+    scrollToElement("#contact");
+  };
+
   return (
-    <header className="w-full fixed flex justify-center items-center font-satoshi z-10 appbar transition-all">
-      <div className="max-w-[80%] flex w-full justify-center items-center py-8">
-        <div className="w-1/3 flex-1">
+    <header className="appbar rounded-b-md w-full fixed flex justify-center items-center font-satoshi z-10 transition-all">
+      <div className="max-w-[80%] flex w-full justify-between items-center py-4 md:py-8">
+        <div className="">
           <a href="/" className="flex w-8 h-8">
             <img src={LogoImage} alt="Logo" className="w-8 h-8" />
           </a>
         </div>
-        <div className="w-2/3 flex-1">
+        <div className="w-2/3 flex-1 hidden md:flex md:justify-end">
           <nav>
-            <ul className="flex justify-end md:text-xl lg:text-2xl gap-x-3 md:gap-x-12">
+            <ul className="flex justify-end md:text-lg lg:text-xl gap-x-3 md:gap-x-12">
               <li className="">
                 <a
                   href="/about"
                   className="text-white/80 hover:text-white transition-colors"
                 >
-                  About
+                  Sobre mí
+                </a>
+              </li>
+              <li className="">
+                <a
+                  href="/projects"
+                  className="text-white/80 hover:text-white transition-colors"
+                >
+                  Proyectos
                 </a>
               </li>
               <li className="">
@@ -47,15 +61,21 @@ export default function Header() {
                 </a>
               </li>
               <li className="">
-                <a
-                  href="/contact"
+                <button
+                  href=""
+                  onClick={handleContactMeClick}
                   className="text-white/80 hover:text-white transition-colors"
                 >
-                  Contact
-                </a>
+                  Contáctame
+                </button>
               </li>
             </ul>
           </nav>
+        </div>
+        <div className="flex md:hidden">
+          <button className="flex justify-center items-center p-2 rounded-full hover:bg-white/10 transition-colors w-[50px] h-[50px]">
+            <img src={MenuIcon} alt="" className="w-[25px] h-[25px]" />
+          </button>
         </div>
       </div>
     </header>

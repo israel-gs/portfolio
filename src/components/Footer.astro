@@ -1,10 +1,22 @@
 ---
-import LogoImage from "../assets/images/logo.png";
-let currentYear = new Date().getFullYear();
+import AstroLogo from "../assets/images/astro.svg";
+import TailwindLogo from "../assets/images/tailwindcss.svg";
+import ReactLogo from "../assets/images/react.svg";
 ---
 
 <footer
-  class="flex flex-col justify-center items-center py-20 bg-dark-800 text-white font-satoshi font-bold"
+  class="flex flex-col justify-center items-center py-20 bg-dark-800 text-white font-satoshi"
 >
-  <span class="text-xl md:text-3xl">Israel Gutierrez, {currentYear}</span>
+  <div class="flex flex-col justify-start items-start">
+    <span class="mb-3">Portafolio hecho con:</span>
+    <div class="flex justify-between">
+      <img class="inline-block h-8 mx-2" src={AstroLogo} alt="Logo de Astro" />
+      <img class="inline-block h-6 mx-2" src={ReactLogo} alt="Logo de React" />
+      <img
+        class="inline-block h-6 mx-2"
+        src={TailwindLogo}
+        alt="Logo de TailwindCSS"
+      />
+    </div>
+  </div>
 </footer>
