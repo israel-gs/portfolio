@@ -7,6 +7,7 @@ import DownloadIcon from "../assets/images/download-solid.svg";
 import IconButton from "./IconButton.astro";
 import ContactForm from "./ContactForm.astro";
 import Button from "./Button";
+import Tooltip from "./Tooltip.astro";
 ---
 
 <section
@@ -41,11 +42,13 @@ import Button from "./Button";
               className="stroke-white"
               src={StackOverflowLogo}
             />
-            <IconButton
-              href="https://api.whatsapp.com/send?phone=51934090580"
-              className="stroke-white"
-              src={WhatsappLogo}
-            />
+            <Tooltip text="+51 934090580" position="top">
+              <IconButton
+                href="https://api.whatsapp.com/send?phone=51934090580"
+                className="stroke-white"
+                src={WhatsappLogo}
+              />
+            </Tooltip>
           </div>
         </div>
       </div>

@@ -20,10 +20,10 @@ export default function Button({
   buttonStyle = "normal",
 }: ButtonProps) {
 
-  let style = `bg-primary-600 hover:bg-primary-500 transition-colors text-white rounded-md px-8 py-4 font-bold font-satoshi ${className}`;
+  let style = `bg-primary-600 hover:bg-primary-800 transition-colors text-white rounded-md px-8 py-4 font-bold font-satoshi ${className}`;
 
   if (buttonStyle === 'outline') {
-    style += ' border border-2 border-primary-600  bg-transparent hover:bg-primary-600 hover:text-white';
+    style += ' border border-2 border-primary-600 bg-transparent hover:bg-primary-600 hover:text-white';
   }
 
 
