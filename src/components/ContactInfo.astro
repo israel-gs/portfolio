@@ -4,10 +4,9 @@ import GitHubLogo from "../assets/images/github.svg";
 import StackOverflowLogo from "../assets/images/stack-overflow.svg";
 import WhatsappLogo from "../assets/images/whatsapp.svg";
 import DownloadIcon from "../assets/images/download-solid.svg";
-import IconButton from "./IconButton.astro";
+import IconButton from "./ui/IconButton.astro";
 import ContactForm from "./ContactForm.astro";
-import Button from "./Button";
-import Tooltip from "./Tooltip.astro";
+import Button from "./ui/Button.astro";
 ---
 
 <section
@@ -42,13 +41,11 @@ import Tooltip from "./Tooltip.astro";
               className="stroke-white"
               src={StackOverflowLogo}
             />
-            <Tooltip text="+51 934090580" position="top">
-              <IconButton
-                href="https://api.whatsapp.com/send?phone=51934090580"
-                className="stroke-white"
-                src={WhatsappLogo}
-              />
-            </Tooltip>
+            <IconButton
+              href="https://api.whatsapp.com/send?phone=51934090580"
+              className="stroke-white"
+              src={WhatsappLogo}
+            />
           </div>
         </div>
       </div>
@@ -57,7 +54,6 @@ import Tooltip from "./Tooltip.astro";
           <Button
             href="https://drive.google.com/file/d/1hhB2REI5fNLxssZS2L4wHM81cz0a_PnT/view?usp=sharing"
             element="a"
-            onClick={() => {}}
             className="flex justify-center w-full md:w-fit"
           >
             Descargar CV <img class="ml-4 w-[20px]" src={DownloadIcon} alt="" />

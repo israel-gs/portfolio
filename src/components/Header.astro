@@ -1,0 +1,142 @@
+---
+import LogoImage from "../assets/images/logo.svg";
+import MenuIcon from "../assets/images/bars-solid.svg";
+import CloseIcon from "../assets/images/xmark-solid.svg";
+
+const items = [
+  { label: "Inicio", target: "#home" },
+  { label: "Sobre mí", target: "#about" },
+  { label: "Proyectos", target: "#skills" },
+  { label: "Skills", target: "#projects" },
+  { label: "Contáctame", target: "#contact" },
+];
+---
+
+<>
+  <header
+    class="appbar rounded-b-md w-full fixed flex justify-center items-center font-satoshi z-10 transition-all"
+  >
+    <div
+      class="max-w-[80%] flex w-full justify-between items-center py-4 md:py-8"
+    >
+      <div class="">
+        <a href="/" class="flex w-8 h-8">
+          <img src={LogoImage} alt="Logo" class="w-8 h-8" />
+        </a>
+      </div>
+      <div class="w-2/3 flex-1 hidden md:flex md:justify-end">
+        <nav>
+          <ul
+            class="flex justify-end md:text-lg lg:text-xl gap-x-3 md:gap-x-12"
+          >
+            {
+              items.map((item, index) => (
+                <li>
+                  <a
+                    data-target={item.target}
+                    class="text-white hover:text-gray-300 transition-all cursor-pointer select-none nav-item"
+                  >
+                    {item.label}
+                  </a>
+                </li>
+              ))
+            }
+          </ul>
+        </nav>
+      </div>
+      <div class="flex md:hidden">
+        <button
+          id="open-menu"
+          class="flex justify-center items-center p-2 rounded-full hover:bg-white/10 transition-colors w-[50px] h-[50px]"
+        >
+          <img src={MenuIcon} alt="" class="w-[25px] h-[25px]" />
+        </button>
+      </div>
+    </div>
+  </header>
+  <nav
+    id="menu"
+    class={`transition-all w-full h-full top-0 overflow-hidden z-50 bg-dark-900/70 backdrop-blur-md fixed flex flex-col justify-center items-center hidden`}
+  >
+    <div class="max-w-[80%] flex w-full justify-end py-4 md:py-8">
+      <div class="flex">
+        <button
+          id="close-menu"
+          class="flex justify-center items-center p-2 rounded-full hover:bg-white/10 transition-colors w-[50px] h-[50px]"
+        >
+          <img src={CloseIcon} alt="" class="w-[25px] h-[25px]" />
+        </button>
+      </div>
+    </div>
+    <ul
+      class="flex-1 w-full flex flex-col items-center justify-center gap-y-3 md:text-lg lg:text-xl"
+    >
+      {
+        items.map((item, index) => (
+          <li>
+            <a
+              data-target={item.target}
+              class="text-white hover:text-gray-300 transition-all text-2xl cursor-pointer select-none nav-item"
+            >
+              {item.label}
+            </a>
+          </li>
+        ))
+      }
+    </ul>
+  </nav>
+</>
+
+<script type="module">
+  const $ = (selector) => document.querySelector(selector);
+  const $$ = (selector) => document.querySelectorAll(selector);
+
+  const menuElement = $("#menu");
+  const openMenuElement = $("#open-menu");
+  const closeMenuElement = $("#close-menu");
+  const navItems = $$(".nav-item");
+
+  const toggleMenu = () => {
+    menuElement.classList.toggle("hidden");
+  };
+
+  const scrollToElement = (elementSelector) => {
+    const element = document.querySelector(elementSelector);
+    if (element) {
+      element.scrollIntoView({ behavior: "smooth" });
+    }
+  };
+
+  const changeClassOnScroll = (observedSelector, targetSelector, classes) => {
+    const targetElement = document.querySelector(targetSelector);
+    const observerElement = document.querySelector(observedSelector);
+    const options = {
+      threshold: 0.2,
+    };
+    const observer = new IntersectionObserver(([entry]) => {
+      console.log(entry);
+      if (entry.isIntersecting) {
+        targetElement.classList.remove(...classes);
+      } else {
+        targetElement.classList.add(...classes);
+      }
+    }, options);
+    observer.observe(observerElement);
+  };
+
+  closeMenuElement.addEventListener("click", toggleMenu);
+  openMenuElement.addEventListener("click", toggleMenu);
+
+  navItems.forEach((item) => {
+    item.addEventListener("click", (e) => {
+      const target = e.target.dataset.target;
+      scrollToElement(target);
+      menuElement.classList.add("hidden");
+    });
+  });
+
+  changeClassOnScroll("#home", ".appbar", [
+    "bg-dark-900/30",
+    "backdrop-blur-lg",
+  ]);
+</script>

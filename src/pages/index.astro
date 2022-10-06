@@ -1,81 +1,10 @@
 ---
-import Button from "../components/Button";
 import Layout from "../layouts/Layout.astro";
-import ContactMeButton from "../components/ContactMeButton.jsx";
-import ProfilePicture from "../assets/images/profile.jpg";
 import ContactInfo from "../components/ContactInfo.astro";
-import Footer from "../components/Footer.astro";
+import Main from "../components/Main.astro";
 ---
 
 <Layout title="Welcome to israelgs.com">
-  <main
-    class="flex justify-center items-center font-satoshi h-screen min-h-[900px] main bg-dark-900 relative"
-  >
-    <div class="blur-md w-screen h-screen absolute">
-      <div class="circle-1"></div>
-      <div class="circle-2"></div>
-      <div class="circle-3"></div>
-    </div>
-
-    <div
-      class="max-w-[80%] flex flex-col md:flex-row justify-center items-center py-8 absolute gap-20"
-    >
-      <div class="flex flex-col gap-4 justify-center items-start">
-        <h1 class="text-white text-3xl md:text-6xl font-bold">
-          Hola, <br />yo soy Israel <br />Frontend Developer
-        </h1>
-        <ContactMeButton client:load />
-      </div>
-      <div>
-        <img class="rounded-full w-[250px]" src={ProfilePicture} alt="" />
-      </div>
-    </div>
-  </main>
+  <Main />
   <ContactInfo />
-  <Footer />
 </Layout>
-
-<style>
-  .main {
-    overflow: hidden;
-  }
-
-  .circle-1 {
-    position: absolute;
-    width: 900px;
-    height: 900px;
-    left: -450px;
-    bottom: -450px;
-    background: radial-gradient(
-      28.22% 28.22% at 57.84% 46.03%,
-      rgba(0, 119, 254, 0.207) 0%,
-      rgba(56, 244, 175, 0) 100%
-    );
-  }
-
-  .circle-2 {
-    position: absolute;
-    width: 200px;
-    height: 200px;
-    right: -100px;
-    bottom: -100px;
-    background: radial-gradient(
-      50% 50% at 50% 50%,
-      #38f4af6a 0%,
-      rgba(56, 244, 175, 0) 100%
-    );
-  }
-
-  .circle-3 {
-    position: absolute;
-    width: 600px;
-    height: 600px;
-    top: -300px;
-    left: -300px;
-    background: radial-gradient(
-      28.22% 28.22% at 57.84% 46.03%,
-      rgba(0, 118, 254, 0.5) 0%,
-      rgba(56, 244, 175, 0) 100%
-    );
-  }
-</style>

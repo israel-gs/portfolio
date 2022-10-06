@@ -1,0 +1,84 @@
+---
+import Button from "./ui/Button.astro";
+import ProfilePicture from "../assets/images/profile.jpg";
+---
+
+<main
+  id="home"
+  class="flex justify-center items-center font-satoshi h-screen min-h-[900px] main bg-dark-900 relative"
+>
+  <div class="blur-md w-screen h-screen absolute">
+    <div class="circle-1"></div>
+    <div class="circle-2"></div>
+    <div class="circle-3"></div>
+  </div>
+
+  <div
+    class="max-w-[80%] flex flex-col md:flex-row justify-center items-center py-8 absolute gap-20"
+  >
+    <div class="flex flex-col gap-4 justify-center items-start">
+      <h1
+        class="text-white text-center md:text-start text-3xl md:text-6xl font-bold"
+      >
+        Israel Gutierrez<br />Frontend Developer
+      </h1>
+      <Button id="contact-me" type="button">Contáctame</Button>
+    </div>
+    <div>
+      <img class="rounded-full w-[250px]" src={ProfilePicture} alt="" />
+    </div>
+  </div>
+</main>
+
+<script type="module">
+  const $ = (selector) => document.querySelector(selector);
+  const contactMeElement = $("#contact-me");
+  contactMeElement.addEventListener("click", () => {
+    $("#contact").scrollIntoView({ behavior: "smooth" });
+  });
+</script>
+
+<style>
+  .main {
+    overflow: hidden;
+  }
+
+  .circle-1 {
+    position: absolute;
+    width: 900px;
+    height: 900px;
+    left: -450px;
+    bottom: -450px;
+    background: radial-gradient(
+      28.22% 28.22% at 57.84% 46.03%,
+      rgba(0, 119, 254, 0.207) 0%,
+      rgba(56, 244, 175, 0) 100%
+    );
+  }
+
+  .circle-2 {
+    position: absolute;
+    width: 200px;
+    height: 200px;
+    right: -100px;
+    bottom: -100px;
+    background: radial-gradient(
+      50% 50% at 50% 50%,
+      #38f4af6a 0%,
+      rgba(56, 244, 175, 0) 100%
+    );
+  }
+
+  .circle-3 {
+    position: absolute;
+    width: 600px;
+    height: 600px;
+    top: -300px;
+    left: -300px;
+    background: radial-gradient(
+      28.22% 28.22% at 57.84% 46.03%,
+      rgba(0, 118, 254, 0.5) 0%,
+      rgba(56, 244, 175, 0) 100%
+    );
+  }
+</style>

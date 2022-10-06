@@ -1,5 +1,5 @@
 ---
-import Button from "./Button";
+import Button from "./ui/Button.astro";
 ---
 
 <form
@@ -49,12 +49,9 @@ import Button from "./Button";
     <div class="column is-one-third">
       <div class="field">
         <div class="control">
-          <Button
-            onClick={() => {}}
-            className="w-full"
-            type="submit"
-            buttonStyle="outline">Enviar</Button
-          >
+          <Button className="w-full" type="submit" buttonStyle="outline">
+            Enviar
+          </Button>
         </div>
       </div>
     </div>
