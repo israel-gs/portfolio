@@ -1,7 +1,7 @@
 ---
-import LogoImage from "../assets/images/logo.svg";
-import MenuIcon from "../assets/images/bars-solid.svg";
-import CloseIcon from "../assets/images/xmark-solid.svg";
+import LogoImage from "../../assets/images/logo.svg";
+import MenuIcon from "../../assets/images/bars-solid.svg";
+import CloseIcon from "../../assets/images/xmark-solid.svg";
 
 const items = [
   { label: "Inicio", target: "#home" },
@@ -111,7 +111,7 @@ const items = [
     const targetElement = document.querySelector(targetSelector);
     const observerElement = document.querySelector(observedSelector);
     const options = {
-      threshold: 0.2,
+      threshold: 0.6,
     };
     const observer = new IntersectionObserver(([entry]) => {
       console.log(entry);

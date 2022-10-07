@@ -1,49 +1,21 @@
 ---
 type Props = {
-  element?: "button" | "a";
   id?: string;
-  href?: string;
   className?: string;
   type?: "button" | "submit" | "reset";
   buttonStyle?: "normal" | "outline";
 };
 
-const {
-  id,
-  element = "button",
-  href,
-  className,
-  type = "button",
-  buttonStyle = "normal",
-} = Astro.props;
+const { id, className, type = "button", buttonStyle = "normal" } = Astro.props;
 
 let style = `bg-primary-600 hover:bg-primary-800 transition-colors text-white rounded-md px-8 py-4 font-bold font-satoshi ${className}`;
 
 if (buttonStyle === "outline") {
   style +=
-    " border border-2 border-primary-600 bg-transparent hover:bg-primary-600 hover:text-white";
+    " border border-2 border-primary-800 bg-transparent hover:bg-primary-800 hover:text-white";
 }
-
-const isButton = element === "button";
 ---
 
-{
-  isButton && (
-    <button id={id} type={type} class={style}>
-      <slot />
-    </button>
-  )
-}
-{
-  !isButton && (
-    <a
-      id={id}
-      href={href}
-      target="_blank"
-      rel="noopener noreferrer"
-      class={style}
-    >
-      <slot />
-    </a>
-  )
-}
+<button id={id} type={type} class={style}>
+  <slot />
+</button>

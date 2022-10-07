@@ -1,0 +1,33 @@
+---
+import IconButton from "../ui/IconButton.astro";
+import LinkedinLogo from "../../assets/images/linkedin.svg";
+import GitHubLogo from "../../assets/images/github.svg";
+import StackOverflowLogo from "../../assets/images/stack-overflow.svg";
+import WhatsappLogo from "../../assets/images/whatsapp.svg";
+
+const links = [
+  {
+    href: "https://www.linkedin.com/in/israel-gs/",
+    icon: LinkedinLogo,
+  },
+  {
+    href: "https://github.com/israel-gs",
+    icon: GitHubLogo,
+  },
+  {
+    href: "https://stackoverflow.com/users/8997579/israel-gutierrez-salazar?tab=profile",
+    icon: StackOverflowLogo,
+  },
+  {
+    href: "https://api.whatsapp.com/send?phone=51934090580",
+    icon: WhatsappLogo,
+  },
+];
+---
+
+<div class="mb-4 flex md:flex-col flex-1 items-center md:items-start">
+  <span class="font-bold text-xl md:text-3xl">Social:</span>
+  <div class="flex">
+    {links.map((link) => <IconButton href={link.href} src={link.icon} />)}
+  </div>
+</div>

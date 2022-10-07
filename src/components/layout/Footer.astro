@@ -1,14 +1,14 @@
 ---
-import AstroLogo from "../assets/images/astro.svg";
-import TailwindLogo from "../assets/images/tailwindcss.svg";
-import ReactLogo from "../assets/images/react.svg";
-import Tooltip from "./ui/Tooltip.astro";
+import AstroLogo from "../../assets/images/astro.svg";
+import TailwindLogo from "../../assets/images/tailwindcss.svg";
+import ReactLogo from "../../assets/images/react.svg";
+import Tooltip from "../ui/Tooltip.astro";
 ---
 
 <footer
   class="flex flex-col justify-center items-center py-20 bg-dark-800 text-white font-satoshi"
 >
-  <div class="flex flex-col justify-start items-start">
+  <div class="flex flex-col justify-center items-center">
     <span class="mb-3">Portafolio hecho con:</span>
     <div class="flex justify-between">
       <Tooltip text="Astro">
@@ -16,13 +16,6 @@ import Tooltip from "./ui/Tooltip.astro";
           class="inline-block h-8 mx-2"
           src={AstroLogo}
           alt="Logo de Astro"
-        />
-      </Tooltip>
-      <Tooltip text="React.js">
-        <img
-          class="inline-block h-6 mx-2"
-          src={ReactLogo}
-          alt="Logo de React"
         />
       </Tooltip>
       <Tooltip text="TailwindCSS">
