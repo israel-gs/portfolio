@@ -1,0 +1,60 @@
+---
+import Button from "../ui/Button.astro";
+import ProfilePicture from "../../assets/images/profile-1.avif";
+---
+
+<main
+  id="home"
+  class="flex justify-center items-center font-satoshi h-screen min-h-[900px] main bg-dark-800 relative overflow-hidden"
+>
+  <div class="w-screen h-screen absolute top-0 left-0">
+    <svg width="100%" height="100%" class="text-dark-500">
+      <pattern
+        id="cool-pattern"
+        patternUnits="userSpaceOnUse"
+        width="12"
+        height="12"
+      >
+        <path
+          d="M5,5 l2,0 l0,2 l-2,0 l0,-2 M0,0 l1,0 l0,1 l-1,0 l0,-1 M11,0 l1,0 l0,1 l-1,0 l0,-1 M0,11 l1,0 l0,1 l-1,0 l0,-1 M11,11 l1,0 l0,1 l-1,0 l0,-1"
+          fill="hotpink"
+          style="fill: var(--pattern-channel-1, currentcolor)"></path>
+      </pattern>
+      <rect x="0" y="0" width="100%" height="100%" fill="url(#cool-pattern)">
+      </rect>
+    </svg>
+  </div>
+  <div
+    class="w-screen h-screen absolute top-0 left-0 bg-gradient-to-b from-dark-800/10 to-dark-800"
+  >
+  </div>
+  <div
+    class="max-w-[80%] flex flex-col md:flex-row justify-center items-center py-8 absolute gap-20"
+  >
+    <div class="flex flex-col gap-4 justify-center items-center md:items-start">
+      <h1
+        class="text-white text-center md:text-start text-3xl md:text-6xl font-bold"
+      >
+        Israel Gutierrez<br />Frontend Developer
+      </h1>
+      <Button id="contact-me" type="button">Contáctame</Button>
+    </div>
+    <div>
+      <img class="rounded-full w-[250px]" src={ProfilePicture} alt="" />
+    </div>
+  </div>
+</main>
+
+<script type="module">
+  const $ = (selector) => document.querySelector(selector);
+  const contactMeElement = $("#contact-me");
+  contactMeElement.addEventListener("click", () => {
+    $("#contact").scrollIntoView({ behavior: "smooth" });
+  });
+</script>
+
+<style>
+  .main {
+    overflow: hidden;
+  }
+</style>

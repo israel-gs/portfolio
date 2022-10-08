@@ -8,7 +8,7 @@ type Props = {
 
 const { id, href, className, type = "normal" } = Astro.props;
 
-let style = `bg-primary-600 hover:bg-primary-800 transition-colors text-white rounded-md px-8 py-4 font-bold font-satoshi ${className}`;
+let style = `select-none bg-primary-600 hover:bg-primary-800 transition-colors text-white rounded-md px-8 py-4 font-bold font-satoshi ${className}`;
 
 if (type === "outline") {
   style +=

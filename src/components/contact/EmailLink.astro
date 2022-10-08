@@ -1,0 +1,31 @@
+---
+import Tooltip from "../ui/Tooltip.astro";
+
+const mail = "israelgs83@gmail.com";
+---
+
+<div class="mb-4 flex md:flex-col flex-1 items-center md:items-start">
+  <span class="font-bold text-xl md:text-3xl mr-4">Correo:</span>
+  <Tooltip id="mail-button-tooltip" text="Click para copiar" position="top">
+    <button
+      id="mail-button"
+      data-mail={mail}
+      class="text-white hover:text-primary-500 transition-colors text-xl md:text-2xl"
+    >
+      {mail}
+    </button>
+  </Tooltip>
+</div>
+
+<script>
+  const mailButton = document.getElementById("mail-button");
+  const mailButtonTooltip = document.getElementById("mail-button-tooltip");
+  mailButton.addEventListener("click", () => {
+    const mail = mailButton.dataset.mail;
+    navigator.clipboard.writeText(mail);
+    mailButtonTooltip.innerText = "Copiado";
+    setTimeout(() => {
+      mailButtonTooltip.innerText = "Click para copiar";
+    }, 500);
+  });
+</script>

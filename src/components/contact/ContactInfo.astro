@@ -1,48 +1,35 @@
 ---
-import DownloadIcon from "../../assets/images/download-solid.svg";
-import ContactForm from "./ContactForm.astro";
-import SocialLinks from "./SocialLinks.astro";
 import AnchorButton from "../ui/AnchorButton.astro";
+import EmailLink from "./EmailLink.astro";
+import SocialLinks from "./SocialLinks.astro";
+import Icon from "../ui/Icon.astro";
+import { IconName } from "../../types/IconName";
 
-const mail = "israelgs83@gmail.com";
 const resumeLink =
   "https://drive.google.com/file/d/1hhB2REI5fNLxssZS2L4wHM81cz0a_PnT/view?usp=sharing";
 ---
 
-<section
-  id="contact"
-  class="font-satoshi bg-dark-800 text-white py-28 px-10 lg:py-40 lg:px-20 xl:px-32 flex flex-col justify-center flex-wrap"
->
-  <div class="flex flex-col md:flex-row items-center gap-5 w-full lg:w-auto">
-    <div class="flex flex-col flex-1 mb-8">
-      <div class="w-full lg:w-auto">
-        <h2 class="text-4xl md:text-5xl font-bold mb-8 md:mb-12">Contáctame</h2>
-      </div>
-      <div class="flex flex-wrap gap-4">
-        <p class="mb-4 flex md:flex-col flex-1 items-center md:items-start">
-          <span class="font-bold text-xl md:text-3xl mr-4">Correo:</span>
-          <a
-            href={`mailto:${mail}`}
-            class="text-white hover:text-primary-500 transition-colors text-xl md:text-2xl"
-          >
-            {mail}
-          </a>
-        </p>
-        <SocialLinks />
-      </div>
-      <div class="flex flex-col md:flex-row gap-4">
-        <div class="flex-1">
-          <AnchorButton
-            href={resumeLink}
-            className="flex justify-center w-full md:w-fit"
-          >
-            Descargar CV <img class="ml-4 w-[20px]" src={DownloadIcon} alt="" />
-          </AnchorButton>
-        </div>
-      </div>
-    </div>
-    <div class="flex-1 w-full flex justify-center">
-      <ContactForm />
+<div class="flex flex-col flex-1 mb-8">
+  <div class="w-full lg:w-auto">
+    <h2 class="text-4xl md:text-5xl font-bold mb-8 md:mb-12">Contáctame</h2>
+  </div>
+  <div class="flex flex-wrap gap-4">
+    <EmailLink />
+    <SocialLinks />
+  </div>
+  <div class="flex flex-col md:flex-row gap-4">
+    <div class="flex-1">
+      <AnchorButton
+        href={resumeLink}
+        className="flex justify-center w-full md:w-fit"
+      >
+        <span class="flex items-center">
+          Descargar CV <Icon
+            className="ml-4 w-[20px]"
+            name={IconName.download}
+          />
+        </span>
+      </AnchorButton>
     </div>
   </div>
-</section>
+</div>
