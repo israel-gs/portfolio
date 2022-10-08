@@ -1,6 +1,6 @@
 ---
-import Button from "../ui/Button.astro";
-import ProfilePicture from "../../assets/images/profile-1.avif";
+import SocialIcons from "../contact/SocialIcons.astro";
+import { Image } from "@astrojs/image/components";
 ---
 
 <main
@@ -33,31 +33,27 @@ import ProfilePicture from "../../assets/images/profile-1.avif";
   >
     <div class="flex flex-col gap-4 justify-center items-center md:items-start">
       <h1
-        class="text-white text-center md:text-start text-3xl md:text-6xl font-bold"
+        class="text-white text-center md:text-start text-3xl md:text-6xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-secondary-900 to-primary-300"
       >
-        Israel Gutierrez<br />Frontend Developer
+        <span class="text-4xl md:text-7xl">Israel Gutierrez</span><br />Frontend
+        Developer
       </h1>
-      <Button id="contact-me" type="button">Contáctame</Button>
+      <SocialIcons />
     </div>
     <div>
-      <img
-        class="rounded-full w-[250px]"
+      <Image
+        class="rounded-full"
         width="250"
         height="250"
-        src={ProfilePicture}
+        src="/images/profile.avif"
+        format="avif"
+        aspectRatio={1}
+        quality={80}
         alt=""
       />
     </div>
   </div>
 </main>
-
-<script type="module">
-  const $ = (selector) => document.querySelector(selector);
-  const contactMeElement = $("#contact-me");
-  contactMeElement.addEventListener("click", () => {
-    $("#contact").scrollIntoView({ behavior: "smooth" });
-  });
-</script>
 
 <style>
   .main {

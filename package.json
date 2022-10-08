@@ -20,6 +20,8 @@
     "tailwindcss": "^3.1.8"
   },
   "dependencies": {
-    "@fontsource/manrope": "^4.5.11"
+    "@astrojs/image": "^0.9.2",
+    "@fontsource/manrope": "^4.5.11",
+    "sharp": "^0.31.1"
   }
 }

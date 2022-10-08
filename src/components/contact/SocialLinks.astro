@@ -1,59 +1,8 @@
 ---
-import { IconName } from "../../types/IconName";
-import { LinkType } from "../../types/LinkType";
-import IconAnchor from "../ui/IconAnchor.astro";
-import Tooltip from "../ui/Tooltip.astro";
-
-const socialLinks: LinkType[] = [
-  {
-    href: "https://www.linkedin.com/in/israel-gs/",
-    icon: IconName.linkedin,
-    ariaLabel: "Linkedin",
-  },
-  {
-    href: "https://github.com/israel-gs",
-    icon: IconName.github,
-    ariaLabel: "GitHub",
-  },
-  {
-    href: "https://stackoverflow.com/users/8997579/israel-gutierrez-salazar?tab=profile",
-    icon: IconName.stackoverflow,
-    ariaLabel: "StackOverflow",
-  },
-  {
-    href: "https://api.whatsapp.com/send?phone=51934090580",
-    icon: IconName.whatsapp,
-    tooltipText: "+51 934090580",
-    ariaLabel: "WhatsApp",
-  },
-];
+import SocialIcons from "./SocialIcons.astro";
 ---
 
 <div class="mb-4 flex md:flex-col flex-1 items-center md:items-start">
   <span class="font-bold text-xl md:text-3xl">Social:</span>
-  <div class="flex">
-    {
-      socialLinks.map(({ href, icon, tooltipText, ariaLabel }) => {
-        if (tooltipText) {
-          return (
-            <Tooltip position="top" text={tooltipText}>
-              <IconAnchor
-                href={href}
-                ariaLabel={`Este link abre la página ${ariaLabel}`}
-                iconName={icon}
-              />
-            </Tooltip>
-          );
-        }
-        return (
-          <IconAnchor
-            className="text-white fill-white stroke-white"
-            href={href}
-            ariaLabel={`Este link abre la página ${ariaLabel}`}
-            iconName={icon}
-          />
-        );
-      })
-    }
-  </div>
+  <SocialIcons />
 </div>
