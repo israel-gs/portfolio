@@ -1,12 +1,12 @@
 ---
-import { IconName } from "../../types/IconName";
-import Icon from "../ui/Icon.astro";
+import { IconName } from "@base/types/IconName";
+import IconButton from "@ui/IconButton.astro";
 
 const items = [
   { label: "Inicio", target: "#home" },
   { label: "Sobre mí", target: "#about" },
-  { label: "Proyectos", target: "#skills" },
-  { label: "Skills", target: "#projects" },
+  { label: "Proyectos", target: "#projects" },
+  { label: "Skills", target: "#skills" },
   { label: "Contáctame", target: "#contact" },
 ];
 ---
@@ -74,13 +74,11 @@ const items = [
         </nav>
       </div>
       <div class="flex md:hidden">
-        <button
+        <IconButton
           id="open-menu"
-          class="flex justify-center items-center p-2 rounded-full hover:bg-white/10 transition-colors w-[50px] h-[50px]"
-          aria-label="Abrir menú"
-        >
-          <Icon name={IconName.bars} className="w-[25px] h-[25px] text-white" />
-        </button>
+          className="text-white"
+          iconName={IconName.bars}
+        />
       </div>
     </div>
   </header>
@@ -90,16 +88,11 @@ const items = [
   >
     <div class="max-w-[80%] flex w-full justify-end py-4 md:py-8">
       <div class="flex">
-        <button
+        <IconButton
           id="close-menu"
-          class="flex justify-center items-center p-2 rounded-full hover:bg-white/10 transition-colors w-[50px] h-[50px]"
-          aria-label="Cerrar menú"
-        >
-          <Icon
-            name={IconName.xmark}
-            className="w-[25px] h-[25px] text-white"
-          />
-        </button>
+          className="text-white"
+          iconName={IconName.xmark}
+        />
       </div>
     </div>
     <ul

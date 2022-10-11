@@ -1,9 +1,11 @@
 export enum IconName {
-    linkedin,
-    github,
-    stackoverflow,
-    whatsapp,
-    xmark,
-    bars,
-    download
+  linkedin,
+  github,
+  stackoverflow,
+  whatsapp,
+  xmark,
+  bars,
+  download,
+  link,
+  playstore,
 }

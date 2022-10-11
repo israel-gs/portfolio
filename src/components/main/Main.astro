@@ -40,13 +40,13 @@ import { Image } from "@astrojs/image/components";
       </h1>
       <SocialIcons />
     </div>
-    <div>
+    <div class="profile-image-container relative">
       <Image
-        class="rounded-full w-[250px]"
+        class="rounded-full w-[250px] relative z-[1]"
         width="500"
         height="500"
         src="/images/profile.avif"
-        format="avif"
+        format="jpg"
         aspectRatio={1}
         quality={80}
         alt=""
@@ -58,5 +58,40 @@ import { Image } from "@astrojs/image/components";
 <style>
   .main {
     overflow: hidden;
+  }
+
+  .profile-image-container:before,
+  .profile-image-container:after {
+    border-radius: 64px;
+    content: "";
+    position: absolute;
+    z-index: 0;
+  }
+
+  .profile-image-container:before {
+    background-image: radial-gradient(
+      50% 50% at 50% 50%,
+      rgba(0, 119, 254, 0.2) 0,
+      rgba(0, 119, 254, 0.3) 100%
+    );
+    filter: blur(75px);
+    height: 200px;
+    left: 19px;
+    top: 19px;
+    transform: rotate(45deg);
+    width: 200px;
+  }
+
+  .profile-image-container:after {
+    background-image: radial-gradient(
+      50% 50% at 50% 50%,
+      rgba(56, 244, 175, 0.2) 0,
+      rgba(56, 244, 175, 0.4) 100%
+    );
+    filter: blur(192px);
+    height: 190px;
+    left: 29px;
+    top: 42px;
+    width: 190px;
   }
 </style>

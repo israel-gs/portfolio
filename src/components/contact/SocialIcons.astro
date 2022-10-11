@@ -1,8 +1,8 @@
 ---
-import { IconName } from "../../types/IconName";
-import { LinkType } from "../../types/LinkType";
-import IconAnchor from "../ui/IconAnchor.astro";
-import Tooltip from "../ui/Tooltip.astro";
+import { IconName } from "@base/types/IconName";
+import { LinkType } from "@base/types/LinkType";
+import IconAnchor from "@ui/IconAnchor.astro";
+import Tooltip from "@ui/Tooltip.astro";
 
 const socialLinks: LinkType[] = [
   {
@@ -36,7 +36,7 @@ const socialLinks: LinkType[] = [
         return (
           <Tooltip position="top" text={tooltipText}>
             <IconAnchor
-              className="text-white fill-white stroke-white"
+              className="text-white"
               href={href}
               ariaLabel={`Este link abre la página ${ariaLabel}`}
               iconName={icon}
@@ -46,7 +46,7 @@ const socialLinks: LinkType[] = [
       }
       return (
         <IconAnchor
-          className="text-white fill-white stroke-white"
+          className="text-white"
           href={href}
           ariaLabel={`Este link abre la página ${ariaLabel}`}
           iconName={icon}

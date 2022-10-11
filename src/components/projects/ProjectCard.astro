@@ -1,0 +1,70 @@
+---
+import { Image } from "@astrojs/image/components";
+import Card from "@components/ui/Card.astro";
+import IconAnchor from "@components/ui/IconAnchor.astro";
+import { ProjectType } from "@base/types/ProjectType";
+import { IconName } from "@base/types/IconName";
+import TechnologyChip from "@components/ui/TechnologyChip.astro";
+
+type Prop = {
+  project: ProjectType;
+};
+
+const {
+  project: { title, image, repoUrl, playStoreUrl, siteUrl, technologies },
+} = Astro.props as Prop;
+---
+
+<Card className="flex-1 flex flex-col">
+  <h3 class="text-center mb-4">{title}</h3>
+  <div class="flex flex-col justify-between gap-3 flex-1">
+    <div
+      class="w-full rounded-md relative mb-4 before:rounded-md before:w-full before:h-full before:absolute before:content-[''] before:bg-dark-300 before:animate-pulse"
+    >
+      <Image
+        class="w-full aspect-autoobject-contain rounded-md relative"
+        width={400}
+        height={200}
+        src={image}
+        format="jpg"
+        aspectRatio={1}
+        quality={100}
+        alt=""
+      />
+    </div>
+    <div class="flex mb-4 gap-2 flex-wrap">
+      {
+        technologies &&
+          technologies.map((technology) => <TechnologyChip name={technology} />)
+      }
+    </div>
+    <div class="flex justify-center">
+      <IconAnchor
+        className=""
+        href={repoUrl}
+        ariaLabel={`Repositorio de ${title}`}
+        iconName={IconName.github}
+      />
+      {
+        playStoreUrl && (
+          <IconAnchor
+            className="ml-4"
+            href={playStoreUrl}
+            ariaLabel={`Play Store de ${title}`}
+            iconName={IconName.playstore}
+          />
+        )
+      }
+      {
+        siteUrl && (
+          <IconAnchor
+            className="ml-4"
+            href={siteUrl}
+            ariaLabel={`Sitio web de ${title}`}
+            iconName={IconName.link}
+          />
+        )
+      }
+    </div>
+  </div>
+</Card>
