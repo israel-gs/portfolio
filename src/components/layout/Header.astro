@@ -1,0 +1,168 @@
+---
+import { IconName } from "@base/types/IconName";
+import IconButton from "@ui/IconButton.astro";
+
+const items = [
+  { label: "Inicio", target: "#home" },
+  { label: "Sobre mí", target: "#about" },
+  { label: "Proyectos", target: "#projects" },
+  { label: "Skills", target: "#skills" },
+  { label: "Contáctame", target: "#contact" },
+];
+---
+
+<>
+  <header
+    class="appbar rounded-b-md w-full fixed flex justify-center items-center font-satoshi z-10 transition-all"
+  >
+    <div
+      class="max-w-[80%] flex w-full justify-between items-center py-4 md:py-8"
+    >
+      <div class="">
+        <a
+          href="/"
+          class="flex w-8 h-8"
+          aria-label="Este ícono redirecciona al inicio de la página"
+        >
+          <svg
+            width="32"
+            height="32"
+            viewBox="0 0 22 22"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M22 11C22 17.0751 17.0751 22 11 22C4.92487 22 0 17.0751 0 11C0 4.92487 4.92487 0 11 0C17.0751 0 22 4.92487 22 11Z"
+              fill="url(#paint0_linear_1214_7)"></path>
+            <path
+              d="M10.9845 7.61459C11.6056 7.61459 12.1181 7.10212 12.1181 6.46541C12.1181 5.82871 11.6056 5.33176 10.9845 5.33176C10.3322 5.33176 9.81977 5.82871 9.81977 6.46541C9.81977 7.10212 10.3322 7.61459 10.9845 7.61459ZM10.0372 16.8235H11.9318V9.152H10.0372V16.8235Z"
+              fill="white"></path>
+            <defs>
+              <linearGradient
+                id="paint0_linear_1214_7"
+                x1="1.34146"
+                y1="0.268293"
+                x2="24.9512"
+                y2="23.878"
+                gradientUnits="userSpaceOnUse"
+              >
+                <stop stop-color="#0076FE"></stop>
+                <stop offset="1" stop-color="#2BD596"></stop>
+              </linearGradient>
+            </defs>
+          </svg>
+        </a>
+      </div>
+      <div class="w-2/3 flex-1 hidden md:flex md:justify-end">
+        <nav>
+          <ul
+            class="flex justify-end md:text-lg lg:text-xl gap-x-3 md:gap-x-12"
+          >
+            {
+              items.map((item, index) => (
+                <li>
+                  <button
+                    data-target={item.target}
+                    class="text-white hover:text-gray-300 transition-all cursor-pointer select-none nav-item"
+                  >
+                    {item.label}
+                  </button>
+                </li>
+              ))
+            }
+          </ul>
+        </nav>
+      </div>
+      <div class="flex md:hidden">
+        <IconButton
+          id="open-menu"
+          className="text-white"
+          iconName={IconName.bars}
+        />
+      </div>
+    </div>
+  </header>
+  <nav
+    id="menu"
+    class={`transition-all w-full h-full top-0 overflow-hidden z-50 bg-dark-800/70 backdrop-blur-md fixed flex flex-col justify-center items-center hidden`}
+  >
+    <div class="max-w-[80%] flex w-full justify-end py-4 md:py-8">
+      <div class="flex">
+        <IconButton
+          id="close-menu"
+          className="text-white"
+          iconName={IconName.xmark}
+        />
+      </div>
+    </div>
+    <ul
+      class="flex-1 w-full flex flex-col items-center justify-center gap-y-3 md:text-lg lg:text-xl"
+    >
+      {
+        items.map((item, index) => (
+          <li>
+            <button
+              data-target={item.target}
+              class="text-white hover:text-gray-300 transition-all text-2xl cursor-pointer select-none nav-item"
+            >
+              {item.label}
+            </button>
+          </li>
+        ))
+      }
+    </ul>
+  </nav>
+</>
+
+<script type="module">
+  const $ = (selector) => document.querySelector(selector);
+  const $$ = (selector) => document.querySelectorAll(selector);
+
+  const menuElement = $("#menu");
+  const openMenuElement = $("#open-menu");
+  const closeMenuElement = $("#close-menu");
+  const navItems = $$(".nav-item");
+
+  const toggleMenu = () => {
+    menuElement.classList.toggle("hidden");
+  };
+
+  const scrollToElement = (elementSelector) => {
+    const element = document.querySelector(elementSelector);
+    if (element) {
+      element.scrollIntoView({ behavior: "smooth" });
+    }
+  };
+
+  const changeClassOnScroll = (observedSelector, targetSelector, classes) => {
+    const targetElement = document.querySelector(targetSelector);
+    const observerElement = document.querySelector(observedSelector);
+    const options = {
+      threshold: 0.6,
+    };
+    const observer = new IntersectionObserver(([entry]) => {
+      if (entry.isIntersecting) {
+        targetElement.classList.remove(...classes);
+      } else {
+        targetElement.classList.add(...classes);
+      }
+    }, options);
+    observer.observe(observerElement);
+  };
+
+  closeMenuElement.addEventListener("click", toggleMenu);
+  openMenuElement.addEventListener("click", toggleMenu);
+
+  navItems.forEach((item) => {
+    item.addEventListener("click", (e) => {
+      const target = e.target.dataset.target;
+      scrollToElement(target);
+      menuElement.classList.add("hidden");
+    });
+  });
+
+  changeClassOnScroll("#home", ".appbar", [
+    "bg-dark-800/30",
+    "backdrop-blur-lg",
+  ]);
+</script>

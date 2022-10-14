@@ -1,0 +1,45 @@
+---
+import { TechnologyName } from "@base/types/TechnologyName";
+import Card from "@components/ui/Card.astro";
+import TechnologyIcon from "@components/ui/TechnologyIcon.astro";
+import Tooltip from "@components/ui/Tooltip.astro";
+
+const skills = {
+  [TechnologyName.flutter]: "Avanzado",
+  [TechnologyName.reactjs]: "Avanzado",
+  [TechnologyName.nextjs]: "Intermedio",
+  [TechnologyName.astro]: "Intermedio",
+  [TechnologyName.dart]: "Avanzado",
+  [TechnologyName.typescript]: "Avanzado",
+  [TechnologyName.git]: "Avanzado",
+  [TechnologyName.tailwindcss]: "Intermedio",
+  [TechnologyName.javascript]: "Avanzado",
+};
+---
+
+<section
+  id="skills"
+  class="font-satoshi bg-dark-800 text-white py-28 px-10 lg:py-40 lg:px-20 xl:px-60 flex flex-col justify-center flex-wrap"
+>
+  <div class="flex flex-col justify-center w-full lg:w-auto gap-5 md:gap-12">
+    <h2 class="whitespace-nowrap text-4xl md:text-5xl font-bold mb-8 md:mb-12">
+      Skills
+    </h2>
+    <div
+      class="flex flex-col items-center justify-evenly md:flex-row text-xl w-full gap-5"
+    >
+      <Card className="flex justify-center w-full flex-wrap gap-20 py-20">
+        {
+          Object.entries(skills).map(([skill, level]) => (
+            <Tooltip text={`${skill} - ${level}`}>
+              <TechnologyIcon
+                name={skill as TechnologyName}
+                className="w-20 h-20"
+              />
+            </Tooltip>
+          ))
+        }
+      </Card>
+    </div>
+  </div>
+</section>

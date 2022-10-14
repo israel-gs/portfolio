@@ -1,0 +1,63 @@
+---
+import Button from "@ui/Button.astro";
+import Card from "@ui/Card.astro";
+---
+
+<div class="flex-1 w-full flex justify-center">
+  <Card>
+    <form
+      accept-charset="UTF-8"
+      action="https://usebasin.com/f/8da4f82a4a96"
+      enctype="multipart/form-data"
+      method="POST"
+    >
+      <div class="mb-6 w-full flex flex-col gap-2">
+        <label class="label has-text-white">Nombre</label>
+        <input
+          type="text"
+          id="name"
+          name="name"
+          required
+          class="rounded text-white px-4 py-2 bg-dark-400 focus:outline-none"
+          placeholder="Escribe tu nombre"
+        />
+      </div>
+
+      <div class="mb-6 w-full flex flex-col gap-2">
+        <label class="label has-text-white">Correo</label>
+        <input
+          type="email"
+          id="email"
+          name="email"
+          required
+          class="rounded text-white px-4 py-2 bg-dark-400 focus:outline-none"
+          placeholder="Escribe tu correo"
+        />
+      </div>
+
+      <div class="mb-6 w-full flex flex-col gap-2">
+        <label class="label has-text-white">Mensaje</label>
+        <textarea
+          id="message"
+          name="message"
+          required
+          rows="5"
+          class="rounded text-white px-4 py-2 bg-dark-400 focus:outline-none resize-none"
+          placeholder="Escribe tu mensaje"></textarea>
+      </div>
+
+      <input type="hidden" id="gotcha" name="_gotcha" />
+      <div class="columns is-centered">
+        <div class="column is-one-third">
+          <div class="field">
+            <div class="control">
+              <Button className="w-full" type="submit" buttonStyle="outline">
+                Enviar
+              </Button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </form>
+  </Card>
+</div>

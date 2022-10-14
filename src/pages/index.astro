@@ -1,10 +1,16 @@
 ---
-import Layout from "../layouts/Layout.astro";
-import Card from "../components/Card.astro";
+import Layout from "@base/layouts/Layout.astro";
+import Main from "@components/main/Main.astro";
+import Contact from "@components/contact/Contact.astro";
+import About from "@components/about/About.astro";
+import Projects from "@components/projects/Projects.astro";
+import Skills from "@components/skills/Skills.astro";
 ---
 
 <Layout title="Welcome to israelgs.com">
-  <main class="flex justify-center items-center h-screen">
-    <h1 class="text-center">🧱 Página en construcción</h1>
-  </main>
+  <Main />
+  <About />
+  <Projects />
+  <Skills />
+  <Contact />
 </Layout>

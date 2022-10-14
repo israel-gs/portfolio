@@ -1,0 +1,19 @@
+---
+import { TechnologyName, getTechnologyColor } from "@base/types/TechnologyName";
+import TechnologyIcon from "./TechnologyIcon.astro";
+
+type Props = {
+  name: TechnologyName;
+};
+
+const { name } = Astro.props as Props;
+
+const color = getTechnologyColor(name);
+---
+
+<div
+  class={`px-3 py-1 text-xs md:text-sm font-semibold rounded-full flex items-center gap-1 ${color}`}
+>
+  <TechnologyIcon name={name} className="w-[20px] h-[20px]" />
+  <span class="ml-1">{name}</span>
+</div>

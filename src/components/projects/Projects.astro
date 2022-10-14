@@ -1,0 +1,65 @@
+---
+import { IconName } from "@base/types/IconName";
+import Icon from "@components/ui/Icon.astro";
+import Card from "@ui/Card.astro";
+import IconAnchor from "@ui/IconAnchor.astro";
+import { Image } from "@astrojs/image/components";
+import { ProjectType } from "@base/types/ProjectType";
+import ProjectCard from "./ProjectCard.astro";
+import { TechnologyName } from "@base/types/TechnologyName";
+
+const projects: ProjectType[] = [
+  {
+    title: "Tap To Count App",
+    description: "",
+    image: "/images/project-1.avif",
+    repoUrl: "https://github.com/israel-gs/tap_to_count",
+    playStoreUrl:
+      "https://play.google.com/store/apps/details?id=com.israelgs.tap_to_count",
+    technologies: [TechnologyName.flutter, TechnologyName.dart],
+  },
+  {
+    title: "Pokedex App",
+    description: "",
+    image: "/images/project-2.avif",
+    repoUrl: "https://github.com/israel-gs/pokedex",
+    technologies: [TechnologyName.reactjs, TechnologyName.javascript],
+  },
+  {
+    title: "Password Generator",
+    description: "",
+    image: "/images/project-3.avif",
+    repoUrl: "https://github.com/israel-gs/hacktoberfest-2022",
+    siteUrl: "https://hacktoberfest-2022.vercel.app/entry/israel-gs",
+    technologies: [
+      TechnologyName.astro,
+      TechnologyName.reactjs,
+      TechnologyName.javascript,
+    ],
+  },
+];
+---
+
+<section
+  id="projects"
+  class="font-satoshi bg-dark-800 text-white py-28 px-10 lg:py-40 lg:px-20 xl:px-60 flex flex-col justify-center flex-wrap"
+>
+  <div class="flex flex-col justify-center w-full lg:w-auto gap-5 md:gap-12">
+    <h2 class="whitespace-nowrap text-4xl md:text-5xl font-bold mb-8 md:mb-12">
+      Proyectos
+    </h2>
+    <div class="flex flex-col md:flex-row text-xl w-full gap-5">
+      {projects.map((project) => <ProjectCard project={project} />)}
+    </div>
+    <a
+      href="https://github.com/israel-gs/portfolio"
+      target="_blank"
+      rel="noopener noreferrer"
+      class="flex self-center whitespace-nowrap py-2 px-4 justify-center items-center gap-2 rounded-full hover:bg-white/10 transition-colors mt-8 underline underline-offset-4"
+      aria-label={`Repositorio de este portafolio`}
+    >
+      Este portafolio
+      <Icon className="" name={IconName.github}>Y este portafolio</Icon>
+    </a>
+  </div>
+</section>
